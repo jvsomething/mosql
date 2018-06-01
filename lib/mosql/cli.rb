@@ -176,12 +176,11 @@ module MoSQL
         @streamer.optail
       end
     end
+
+    private
+
+    def ssl_opts(uri)
+      options[:mongo].match(/ssl=true/) ? {ssl: true, ssl_verify: false} : {}
+    end
   end
-
-  private
-
-  def ssl_opts(uri)
-    options[:mongo].match(/ssl=true/) ? {ssl: true, ssl_verify: false} : {}
-  end
-
 end
